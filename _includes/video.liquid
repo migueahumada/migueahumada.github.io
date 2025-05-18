@@ -1,5 +1,48 @@
 {% assign extension = include.path | split: '.' | last %}
 
+
+<figure class="video-figure" style="margin: 0; padding: 0;">
+  <div class="video-wrapper" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    
+    {% if extension == 'mp4' or extension == 'webm' or extension == 'ogg' %}
+      <video
+        src="{% if include.cache_bust %}{{ include.path | relative_url | bust_file_cache }}{% else %}{{ include.path | relative_url }}{% endif %}"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        {% if include.class %}class="{{ include.class }}"{% endif %}
+        {% if include.title %}title="{{ include.title }}"{% endif %}
+        {% if include.alt %}alt="{{ include.alt }}"{% endif %}
+        {% if include.autoplay %}autoplay{% endif %}
+        {% if include.controls %}controls{% endif %}
+        {% if include.loop %}loop{% endif %}
+        {% if include.muted %}muted{% endif %}
+        {% if include.poster %}poster="{{ include.poster }}"{% endif %}
+      ></video>
+
+    {% else %}
+      <iframe
+        src="{{ include.path }}"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        {% if include.class %}class="{{ include.class }}"{% endif %}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        {% if include.title %}title="{{ include.title }}"{% endif %}
+        {% if include.alt %}alt="{{ include.alt }}"{% endif %}
+      ></iframe>
+    {% endif %}
+
+  </div>
+
+  {% if include.caption %}
+    <figcaption class="caption">{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>
+
+  
+
+
+{% comment %}
+Past cooode!!!
 <figure>
   {% if extension == 'mp4' or extension == 'webm' or extension == 'ogg' %}
     <video
@@ -57,6 +100,8 @@
       src="{{ include.path }}"
       {% if include.class %}
         class="{{ include.class }}"
+        frameborder ="0"
+        allowfullscreen
       {% endif %}
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -95,3 +140,5 @@
     <figcaption class="caption">{{ include.caption }}</figcaption>
   {% endif %}
 </figure>
+
+{% endcomment %}
