@@ -2,80 +2,67 @@
 layout: page
 title: Playing a sound with portaudio and libsndfile
 description: Low level play sound implementation
-img: assets/img/12.jpg
+img: https://images.unsplash.com/photo-1623282033815-40b05d96c903?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 importance: 1
-category: Audio Programming
-related_publications: true
+category: work
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+This is a low-level audio playback implementation using libsndfile to read audio data from a .wav file and PortAudio to stream the audio to the default output device. It includes memory management, a stream callback function, and basic file I/O error handling.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+With libsndfile I can easily retrive wav data.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+  ```cpp
+  soundData->soundfile = sf_open("D:/Coding/C++/Test_Portaudio_Libsndfile/assets/Audio_01.wav", 
+                                 SFM_READ, 
+                                 &soundData->info);
+      if (soundData->soundfile == NULL) {
+          printf("Error: Couldn't open the soundfile.\n");
+          free(soundData);
+          return EXIT_FAILURE;
+      }
+  ```
+A custom callback is created to pass the wav data to the output buffer.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+  ```cpp
+  static int myCallback(const void* input, void* output, unsigned long frameCount,
+    const PaStreamCallbackTimeInfo* timeInfo,
+    PaStreamCallbackFlags statusFlags, void* userData)
+  {
+    SoundData* data = (SoundData*)userData;
+    float* out = (float*)output;
+    (void)input;
+    
+    unsigned long totalSamples = frameCount * data->info.channels;
+
+    sf_count_t readSamples = sf_read_float(data->soundfile, out, totalSamples);
+
+    if (readSamples < totalSamples) 
+    {
+        for (sf_count_t i = readSamples; i < totalSamples; i++) 
+        {
+            out[i] = 0.0f; 
+        }
+        return paComplete; 
+    }
+
+    return paContinue;   
+  }
+  ```
+ 
+ <h2 style="color: #2698ba;"> Result </h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm col-12">
+        {% include video.liquid path="https://www.youtube.com/embed/3HAab9DwCTA?si=BbVte-lK0h06XEHT" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-```
+<br>
 
-{% endraw %}
+You can find the code in my repo <a href="https://github.com/migueahumada/Test_Portaudio_Libsndfile">here</a>!  
+
+
+
+---

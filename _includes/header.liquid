@@ -55,6 +55,7 @@
               {% endif %}
             </a>
           </li>
+          
 
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
@@ -133,6 +134,14 @@
                 <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
                 <i class="ti ti-sun-filled" id="light-toggle-light"></i>
               </button>
+            </li>
+            <!--- Activate Language --->
+            <li class="nav-item active">
+              {% if site.lang == "en" %}
+              <a class="nav-link" href="{{site.baseurl_root}}/es{{page.url}}"> ES </a>
+              {% elsif site.lang == "es" %}
+              <a class="nav-link" href="{{site.baseurl_root}}{{page.url}}"> EN </a>
+              {% endif %}
             </li>
           {% endif %}
         </ul>

@@ -3,9 +3,9 @@ layout: page
 title: 💻 Dev
 permalink: /dev-projects/
 description: Software development stuff I'm working on. 
-nav: false #true
+nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [work]
 horizontal: false
 ---
 
