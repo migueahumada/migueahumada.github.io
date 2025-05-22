@@ -26,7 +26,7 @@ latest_posts:
   limit: 2 # leave blank to include all the blog posts
 ---
 
-So, I have a few [audio](), [game]() and [dev]() projects. Wanna check them out?
+So, I have a few [audio](audio-projects), [game](game-projects) and [dev](dev-projects) projects. Wanna check them out?
 
 Honestly, I don't have much to say. Treat others as you would like to be treated. Choose now before later. Wash your hands often. Be passionate about what you like without being crazy. Face things as they come. Just be chill.
 
@@ -49,7 +49,6 @@ Use one of them and make it yours. ;D
  - Free Jazz
 
 <h2 style="color: #2698ba;"> Things I don't like </h2>
- - You
  - Clowns
 
 
