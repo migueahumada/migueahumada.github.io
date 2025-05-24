@@ -52,35 +52,19 @@ ninja.data = [{
             window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
-          description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "projects-compressor-plugin-development",
+      },{id: "projects-compressor-plugin-development",
           title: 'Compressor Plugin Development',
           description: "Compressor plugin with simple parameters.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/CompressorPlugin/";
             },},{id: "projects-convolution-plugin-development",
           title: 'Convolution Plugin Development',
-          description: "Reverb plugin with waveshaping distortion",
+          description: "Reverb plugin with waveshaping distortion.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ConvolutionPlugin/";
             },},{id: "projects-playing-a-sound-with-portaudio-and-libsndfile",
           title: 'Playing a sound with portaudio and libsndfile',
-          description: "Low level play sound implementation",
+          description: "Low level audio implementation.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/PortaudioLibsndfile/";
             },},{id: "projects-simple-rasterizer",
