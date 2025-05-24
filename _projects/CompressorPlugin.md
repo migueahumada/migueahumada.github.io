@@ -8,7 +8,7 @@ category: work
 related_publications: false
 ---
 
-Costac is a lightweight and intuitive audio compressor plugin built using the JUCE framework, designed for real-time dynamic range control in audio production. It provides a clean and accessible interface for both beginners and experienced producers.
+Costac is a lightweight and intuitive audio compressor plugin built using the <a href="https://juce.com/">JUCE</a> framework, designed for real-time dynamic range control in audio production. It provides a clean and accessible interface for both beginners and experienced producers.
  
  <h2 style="color: #2698ba;"> Result </h2>
 

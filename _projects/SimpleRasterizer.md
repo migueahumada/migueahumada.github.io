@@ -8,9 +8,9 @@ category: work
 related_publications: false
 ---
 
-This project is a simple software rasterizer implementation that showcases the fundamentals of rendering 3D graphics without relying on a full GPU pipeline. It uses DirectX 11 for window/context creation, SDL3 for input and cross-platform handling, and a custom audio engine built on top of XAudio2 to provide real-time sound playback. 
+This project is a simple software rasterizer implementation that showcases the fundamentals of rendering 3D graphics without relying on a full GPU pipeline. It uses <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d11-graphics-reference">DirectX 11</a> for window/context creation, <a href="https://github.com/libsdl-org/SDL">SDL3</a> for input and cross-platform handling, and a custom audio engine built on top of <a href="https://learn.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-introduction">XAudio2</a> to provide real-time sound playback. 
 
-**Still in development...**
+**In development**
  
  <h2 style="color: #2698ba;"> Result </h2>
 

@@ -2,7 +2,7 @@
 layout: about
 title: 🤓 About
 permalink: /
-subtitle: Musician, sound designer, game dev, gamer and internaut.
+subtitle: Audio Engineer | Sound Designer | Game Dev | Musician | Gamer | Internaut 
 
 profile:
   align: right

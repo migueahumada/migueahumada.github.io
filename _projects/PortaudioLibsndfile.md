@@ -1,16 +1,16 @@
 ---
 layout: page
 title: Playing a sound with portaudio and libsndfile
-description: Low level play sound implementation
+description: Low level audio implementation.
 img: https://images.unsplash.com/photo-1623282033815-40b05d96c903?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 importance: 1
 category: work
 related_publications: false
 ---
 
-This is a low-level audio playback implementation using libsndfile to read audio data from a .wav file and PortAudio to stream the audio to the default output device. It includes memory management, a stream callback function, and basic file I/O error handling.
+This is a low-level audio playback implementation using <a href="https://github.com/libsndfile/libsndfile">libsndfile</a> to read audio data from a .wav file and <a href="https://github.com/PortAudio/portaudio">PortAudio</a> to stream the audio to the default output device. It includes memory management, a stream callback function, and basic file I/O error handling.
 
-With libsndfile I can easily retrive wav data.
+With libsndfile I can easily decode wav files.
 
   ```cpp
   soundData->soundfile = sf_open("D:/Coding/C++/Test_Portaudio_Libsndfile/assets/Audio_01.wav", 
