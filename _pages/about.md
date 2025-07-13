@@ -26,31 +26,24 @@ latest_posts:
   limit: 2 # leave blank to include all the blog posts
 ---
 
-So, I have a few [audio](audio-projects), [game](game-projects) and [dev](dev-projects) projects. Wanna check them out?
+Check out my [audio](audio-projects), [game](game-projects), and [dev](dev-projects) projects.
 
-Honestly, I don't have much to say. Treat others as you would like to be treated. Choose now before later. Wash your hands often. Be passionate about what you like without being crazy. Face things as they come. Just be chill.
+Have you ever been passionate about a bunch of things at once? Well, that's me and this site is proof. Here, you’ll find music I’ve produced, audio engineering projects I’ve worked on, and video games I’ve helped bring to life. I’m also into tech, so you’ll see some of the audio plugins and game dev tools I’m currently building.
 
-Those are my _mottos_.  
+<h2> Things I like </h2>
 
-Use one of them and make it yours. ;D 
+  - Stingrays
+  - Silent Hill
+  - Frutiger aero vibes
+  - IDM
+  - Aphex Twin
+  - Video games
+  - Free Jazz
 
+<h2> Things I don't like </h2>
+  - Clowns
 
-<h2 style="color: #2698ba;"> Things I like </h2>
-
- - Brown color
- - Stingrays
- - Silent Hill
- - Frutiger aero vibes
- - IDM
- - Aphex Twin
- - Audio stuff
- - Music stuff
- - Game dev stuff
- - Free Jazz
-
-<h2 style="color: #2698ba;"> Things I don't like </h2>
- - Clowns
-
+Wanna get in touch? 
 
 <!--- Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 

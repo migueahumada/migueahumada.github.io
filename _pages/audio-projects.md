@@ -10,7 +10,7 @@ horizontal: false
 ---
 
 
-<h2 style="color: #2698ba;"> Game Audio </h2>
+<h2> Game Audio </h2>
 -----
 <div class="container">
   <div class="row">
@@ -22,7 +22,7 @@ horizontal: false
 
 <br>
 
-<h2 style="color: #2698ba;"> Production, Mix, Master </h2>
+<h2> Production, Mix, Master </h2>
 -----
 <div class="container">
   <div class="row">
@@ -37,7 +37,7 @@ horizontal: false
 
 <br>
 
-<h2 style="color: #2698ba;"> Music Composition </h2>
+<h2> Music Composition </h2>
 -----
 <div class="container">
   <div class="row">
@@ -51,7 +51,7 @@ horizontal: false
 </div>
 <br>
 
-<h2 style="color: #2698ba;"> Live Sound </h2>
+<h2> Live Sound </h2>
 -----
 <div class="container">
   <div class="row">
@@ -64,7 +64,7 @@ horizontal: false
   </div>
 </div>
 
-<h2 style="color: #2698ba;"> Audio Plugins </h2>
+<h2> Audio Plugins </h2>
 -----
 <div class="container">
   <div class="row">
@@ -77,7 +77,7 @@ horizontal: false
   </div>
 </div>
 
-<h2 style="color: #2698ba;"> Podcasts </h2>
+<h2> Podcasts </h2>
 -----
 <div class="container">
   <div class="row">

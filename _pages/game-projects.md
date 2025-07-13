@@ -9,7 +9,7 @@ display_categories: [work, fun]
 horizontal: false
 ---
 
-<h2 style="color: #2698ba;"> Indie Game Dev </h2>
+<h2> Indie Game Dev </h2>
 -----
 <div class="container">
   <div class="row">

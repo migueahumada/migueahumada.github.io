@@ -10,7 +10,7 @@ related_publications: false
 
 This is an audio plugin built using the <a href="https://juce.com/">JUCE</a> framework, combining high-quality convolution reverb with a customizable waveshaping distortion stage. It allows users to load impulse responses (IRs) for realistic spatial environments, and apply analog-style saturation or distortion to shape the tone.
  
- <h2 style="color: #2698ba;"> Result </h2>
+<h2> Result </h2>
 
 <div class="container">
   <div class="row">

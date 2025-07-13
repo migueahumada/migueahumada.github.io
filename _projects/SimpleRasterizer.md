@@ -12,12 +12,12 @@ This project is a simple software rasterizer implementation that showcases the f
 
 **In development**
  
- <h2 style="color: #2698ba;"> Result </h2>
+ <h2> Result </h2>
 
 <div class="container">
   <div class="row">
     <div class="col-sm col-12">
-        {% include video.liquid path="https://www.youtube.com/embed/6Y1THBIa4yM?si=7TXBvFPHMwTA73pq" class="img-fluid rounded z-depth-1" %}
+        {% include video.liquid path="https://www.youtube.com/embed/EXckz5UHRSM?si=aTQjYLvrE3OVJzoP" class="img-fluid rounded z-depth-1" %}
     </div>
   </div>
 </div>

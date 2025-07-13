@@ -50,7 +50,7 @@ A custom callback is created to pass the wav data to the output buffer.
   }
   ```
  
- <h2 style="color: #2698ba;"> Result </h2>
+ <h2> Result </h2>
 
 <div class="container">
   <div class="row">
