@@ -91,6 +91,13 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/SimpleRasterizer/";
             },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%6D%69%67%75%65%6C.%61%68%75%6D%61%64%61@%72%65%63%6D%75%73%69%63%61.%63%6F%6D", "_blank");
+        },
+      },{
         id: 'social-github',
         title: 'GitHub',
         section: 'Socials',
