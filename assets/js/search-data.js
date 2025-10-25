@@ -41,7 +41,7 @@ ninja.data = [{
         
           title: 'How to set up the FMOD API in Xcode | by Miguel A.... <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
         
-        description: "First download the FMOD API from this website. You’ll probably need to log in. If you don’t have an account just make one. Don’t overthink it. I created another folder called FMOD_API and within that…",
+        description: "How to set up the FMOD API in Xcode This is a guide on how to set up the FMOD API to be used in Xcode. This is how to implement the FMOD API in XCode like (this guy) Guy does it. Love him …",
         section: "Posts",
         handler: () => {
           
@@ -63,7 +63,7 @@ ninja.data = [{
         
           title: '🔉 How to set up the FMOD API in Visual Studio | by... <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
         
-        description: "Go to this site to download the FMOD API. Sign in, and then click in the FMOD engine to find your chosen version. I used 2.02.12 for Windows, not Windows 10 UWP. Click on the FMOD API installer and…",
+        description: "🔉 How to set up the FMOD API in Visual Studio It took me at least an hour to complete all of this, but hopefully you can do it faster than I did. So, here’s a guide on how to set up the FMOD API …",
         section: "Posts",
         handler: () => {
           
@@ -80,6 +80,11 @@ ninja.data = [{
           description: "Reverb plugin with waveshaping distortion.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ConvolutionPlugin/";
+            },},{id: "projects-custom-game-audio-engine",
+          title: 'Custom Game Audio Engine',
+          description: "Implementation of a custom audio engine made with XAudio2",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/CustomGameAudioEngine/";
             },},{id: "projects-playing-a-sound-with-portaudio-and-libsndfile",
           title: 'Playing a sound with portaudio and libsndfile',
           description: "Low level audio implementation.",

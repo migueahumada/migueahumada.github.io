@@ -1,0 +1,146 @@
+<!DOCTYPE html> <html lang="es"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Custom Game Audio Engine | Miguel Ahumada </title> <meta name="author" content="Miguel Ahumada"> <meta name="description" content="Implementation of a custom audio engine made with XAudio2"> <meta name="keywords" content="audio-programming, audio, game-dev, miguelahumada, audio-designer"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%94%89&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://migueahumada.github.io/projects/CustomGameAudioEngine/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/es/"> Miguel Ahumada </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">🤓 About </a> </li> <li class="nav-item "> <a class="nav-link" href="/audio-projects/">🔉 Audio </a> </li> <li class="nav-item "> <a class="nav-link" href="/game-projects/">🎮 Games </a> </li> <li class="nav-item "> <a class="nav-link" href="/dev-projects/">💻 Dev </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">🗣️ Blog </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/CustomGameAudioEngine/"> EN </a> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Custom Game Audio Engine</h1> <p class="post-description">Implementation of a custom audio engine made with XAudio2</p> </header> <article> <p><strong>Status: In development</strong></p> <p>This is a custom implementation of a sound engine made in my custom game engine. This implementation is inspired by the way <a href="https://www.fmod.com/docs/2.03/api/core-api.html" rel="external nofollow noopener" target="_blank">FMOD</a> and <a href="https://learn.microsoft.com/es-es/windows/win32/xaudio2/xaudio2-apis-portal" rel="external nofollow noopener" target="_blank">XAudio2</a> work. It was also inspired by a Guy Somberg’s <a href="https://www.youtube.com/watch?v=M8Bd7uHH4Yg" rel="external nofollow noopener" target="_blank">conference video</a> on the CppCon.</p> <div class="container"> <div class="row"> <div class="col-sm col-12"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhUmuzJxyAS2olyoCCqAiPBpp1YulQF-r0fx5mWPToiYVIvchIoUWdpi0ZFAz8UFJT3ORfB5g8ach6uewtAdcXd2ySyKBWoCijxLBQsaOUqlLTPqw8Z_XYgk7SQ5E7kN4ZAUWUyME256gJhDOLIRwLnusBZB91joyBfMW6MCf6Ryi3dApJS7I93pHgdQc/s2638/Screenshot%202025-10-25%20at%2012.58.07-480.webp 480w,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhUmuzJxyAS2olyoCCqAiPBpp1YulQF-r0fx5mWPToiYVIvchIoUWdpi0ZFAz8UFJT3ORfB5g8ach6uewtAdcXd2ySyKBWoCijxLBQsaOUqlLTPqw8Z_XYgk7SQ5E7kN4ZAUWUyME256gJhDOLIRwLnusBZB91joyBfMW6MCf6Ryi3dApJS7I93pHgdQc/s2638/Screenshot%202025-10-25%20at%2012.58.07-800.webp 800w,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhUmuzJxyAS2olyoCCqAiPBpp1YulQF-r0fx5mWPToiYVIvchIoUWdpi0ZFAz8UFJT3ORfB5g8ach6uewtAdcXd2ySyKBWoCijxLBQsaOUqlLTPqw8Z_XYgk7SQ5E7kN4ZAUWUyME256gJhDOLIRwLnusBZB91joyBfMW6MCf6Ryi3dApJS7I93pHgdQc/s2638/Screenshot%202025-10-25%20at%2012.58.07-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhUmuzJxyAS2olyoCCqAiPBpp1YulQF-r0fx5mWPToiYVIvchIoUWdpi0ZFAz8UFJT3ORfB5g8ach6uewtAdcXd2ySyKBWoCijxLBQsaOUqlLTPqw8Z_XYgk7SQ5E7kN4ZAUWUyME256gJhDOLIRwLnusBZB91joyBfMW6MCf6Ryi3dApJS7I93pHgdQc/s2638/Screenshot%202025-10-25%20at%2012.58.07.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> </div> <p>The main classes of this implementation are:</p> <ul> <li> <strong>Audio</strong> <ul> <li>It’s the place where my audio data is contained. Here I have my buffer of samples.</li> </ul> </li> <li> <strong>Channel</strong> <ul> <li>This is the abstraction of my sound voices. Channels can be routed to the main output or to submixes.</li> </ul> </li> <li> <strong>Submix</strong> <ul> <li>Used to group channels,for volume control, and digital signal processing.</li> </ul> </li> <li> <strong>Master</strong> <ul> <li>Is the main output, the endpoint that communicates with the sound card.</li> </ul> </li> <li> <strong>Audio API</strong> <ul> <li>The place where XAudio2 objects are created. It’s like a factory class.</li> </ul> </li> <li> <strong>Sound Engine</strong> <ul> <li>The place where actions are done such as play or pause.</li> </ul> </li> <li> <strong>Audio Component</strong> <ul> <li>The interface between the sound engine and scene objects from the game engine.</li> </ul> </li> </ul> <h2> Implementation </h2> <hr> <h4>AudioAPI</h4> <p>My AudioAPI is like a factory that creates Audio, Channel, Submix and Master objects.</p> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Audio</span><span class="o">&gt;</span> <span class="n">CreateAudio</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">String</span><span class="o">&amp;</span> <span class="n">filepath</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">VoiceCallback</span><span class="o">&gt;&amp;</span> <span class="n">pCallback</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">);</span>
+
+<span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;</span> <span class="n">CreateChannel</span><span class="p">(</span><span class="k">const</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Audio</span><span class="o">&gt;&amp;</span> <span class="n">pAudio</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span>
+                            <span class="n">uint32</span> <span class="n">inputChannels</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                            <span class="n">uint32</span> <span class="n">inputSampleRate</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">);</span>
+
+<span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Submix</span><span class="o">&gt;</span> <span class="n">CreateSubmix</span><span class="p">(</span><span class="n">uint32</span> <span class="n">inputChannels</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                          <span class="n">uint32</span> <span class="n">inputSampleRate</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">);</span>
+
+<span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Master</span><span class="o">&gt;</span> <span class="n">CreateMaster</span><span class="p">(</span><span class="n">uint32</span> <span class="n">inChannels</span> <span class="o">=</span> <span class="n">XAUDIO2_DEFAULT_CHANNELS</span><span class="p">,</span>
+                          <span class="n">uint32</span> <span class="n">inSampleRate</span> <span class="o">=</span> <span class="n">XAUDIO2_DEFAULT_SAMPLERATE</span><span class="p">,</span>
+                          <span class="n">uint32</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div> <p>Those are <a href="https://learn.microsoft.com/es-es/windows/win32/xaudio2/xaudio2-apis-portal" rel="external nofollow noopener" target="_blank">XAudio2</a> objects underneath, it’s basically a wrapper class.</p> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma once
+#include</span> <span class="cpf">"HelperMacros.h"</span><span class="cp">
+#include</span> <span class="cpf">&lt;xaudio2.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;xaudio2fx.h&gt;</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">Submix</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">VoiceCallback</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">Audio</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Channel</span>
+<span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="n">Channel</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">inputChannels</span><span class="p">,</span> 
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">inputSampleRate</span><span class="p">);</span>
+  <span class="o">~</span><span class="n">Channel</span><span class="p">();</span>
+  
+  <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">getInputChannels</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_inputChannels</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">getInputSampleRate</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_inputSampleRate</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="nf">SubmitAudio</span><span class="p">(</span><span class="k">const</span> <span class="n">WPtr</span><span class="o">&lt;</span><span class="n">Audio</span><span class="o">&gt;&amp;</span> <span class="n">pAudio</span><span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Route</span><span class="p">(</span><span class="k">const</span> <span class="n">WPtr</span><span class="o">&lt;</span><span class="n">Submix</span><span class="o">&gt;&amp;</span> <span class="n">channel</span><span class="p">,</span>
+             <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+  
+  <span class="kt">bool</span> <span class="nf">isPlaying</span><span class="p">();</span>
+
+
+ <span class="k">private</span><span class="o">:</span>
+  <span class="k">friend</span> <span class="k">class</span> <span class="nc">AudioAPI</span><span class="p">;</span>
+  <span class="k">friend</span> <span class="k">class</span> <span class="nc">SoundEngine</span><span class="p">;</span>
+  <span class="n">IXAudio2SourceVoice</span><span class="o">*</span> <span class="n">m_pSourceVoice</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_inputChannels</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_inputSampleRate</span><span class="p">;</span>
+  
+  <span class="n">XAUDIO2_VOICE_STATE</span> <span class="n">m_voiceState</span><span class="p">;</span>
+
+  <span class="c1">//Sends </span>
+  <span class="n">XAUDIO2_VOICE_SENDS</span> <span class="n">m_sends</span><span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+  <span class="n">Vector</span><span class="o">&lt;</span><span class="n">XAUDIO2_SEND_DESCRIPTOR</span><span class="o">&gt;</span> <span class="n">m_sendList</span><span class="p">;</span>
+
+  <span class="c1">//FX</span>
+  <span class="n">XAUDIO2_EFFECT_CHAIN</span> <span class="n">m_fxs</span><span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+  <span class="n">Vector</span><span class="o">&lt;</span><span class="n">XAUDIO2_EFFECT_DESCRIPTOR</span><span class="o">&gt;</span> <span class="n">m_fxsList</span><span class="p">;</span>
+
+<span class="p">};</span>
+</code></pre></div></div> <h4>Sound Engine</h4> <p>Those objects are then managed by the Sound Engine where two maps live, one for Channels and the other one for Audios.</p> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma once
+#include</span> <span class="cpf">"Module.h"</span><span class="cp">
+#include</span> <span class="cpf">"AudioDevice.h"</span><span class="cp">
+#include</span> <span class="cpf">"AudioAPI.h"</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="n">ChannelMap</span> <span class="o">=</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">AudioMap</span> <span class="o">=</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Audio</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">SubmixMap</span> <span class="o">=</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Submix</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SoundEngine</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Module</span><span class="o">&lt;</span><span class="n">SoundEngine</span><span class="o">&gt;</span>
+<span class="p">{</span>
+ <span class="nl">public:</span>
+
+  <span class="n">SoundEngine</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">SoundEngine</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">OnStartUp</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">OnShutdown</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="n">Play</span><span class="p">(</span><span class="k">const</span> <span class="n">WPtr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;&amp;</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">float</span> <span class="n">volume</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+
+  <span class="kt">void</span> <span class="n">Update</span><span class="p">();</span>
+
+  <span class="k">const</span> <span class="n">ChannelMap</span><span class="o">&amp;</span> <span class="n">GetChannels</span><span class="p">()</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_mapChannels</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">const</span> <span class="n">AudioMap</span><span class="o">&amp;</span> <span class="n">GetAudios</span><span class="p">()</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_mapAudios</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="nf">CreateAudio</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">String</span><span class="o">&amp;</span> <span class="n">filePath</span><span class="p">);</span>
+  
+  <span class="kt">bool</span> <span class="nf">CreateChannel</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Audio</span><span class="o">&gt;&amp;</span> <span class="n">pAudio</span><span class="p">,</span>
+                     <span class="n">int32</span> <span class="n">numChannels</span><span class="p">,</span>
+                     <span class="n">int32</span> <span class="n">inSampleRate</span><span class="p">);</span>
+
+ <span class="k">protected</span><span class="o">:</span>
+
+  <span class="n">SPtr</span><span class="o">&lt;</span><span class="n">Master</span><span class="o">&gt;</span> <span class="n">m_pMasterOutput</span><span class="p">;</span>
+
+  <span class="n">ChannelMap</span> <span class="n">m_mapChannels</span><span class="p">;</span>
+  <span class="n">AudioMap</span> <span class="n">m_mapAudios</span><span class="p">;</span>
+  <span class="n">SubmixMap</span> <span class="n">m_mapSubmixes</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">SoundEngine</span><span class="o">&amp;</span> <span class="n">g_soundEngine</span><span class="p">();</span>
+</code></pre></div></div> <p>In the Sound Engine we define methods to play, but they’re not used here.</p> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">SoundEngine</span><span class="o">::</span><span class="n">Play</span><span class="p">(</span><span class="k">const</span> <span class="n">WPtr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;&amp;</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">float</span> <span class="n">volume</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">channel</span><span class="p">.</span><span class="n">expired</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">auto</span> <span class="n">CHANNEL</span> <span class="o">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+
+  <span class="n">CHANNEL</span><span class="o">-&gt;</span><span class="n">m_pSourceVoice</span><span class="o">-&gt;</span><span class="n">SetVolume</span><span class="p">(</span><span class="n">volume</span><span class="p">);</span>
+
+  <span class="n">CHANNEL</span><span class="o">-&gt;</span><span class="n">m_pSourceVoice</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  
+<span class="p">}</span>
+</code></pre></div></div> <h4>Audio Component</h4> <p>Here we can call the methods defined in the Sound Engine to play audios.</p> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">AudioComponent</span><span class="o">::</span><span class="n">Play</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">m_channel</span><span class="p">.</span><span class="n">expired</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">m_audio</span><span class="p">.</span><span class="n">expired</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">g_soundEngine</span><span class="p">().</span><span class="n">Play</span><span class="p">(</span><span class="n">m_channel</span><span class="p">,</span><span class="mf">1.0</span><span class="n">f</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>You can find the code in my repo <a href="https://github.com/migueahumada/SimpleRasterizer" rel="external nofollow noopener" target="_blank">here</a>!</p> <hr> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2025 Miguel Ahumada. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
