@@ -4,7 +4,7 @@ title: 🎮 Games
 permalink: /game-projects/
 description: Some videogames I've been involved in. They're not like AAA stuff but they're still games.
 nav: true
-nav_order: 2
+nav_order: 3
 display_categories: [work, fun]
 horizontal: false
 ---

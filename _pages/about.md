@@ -9,7 +9,7 @@ profile:
   image: profile_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>That's me boi ONG</p>
+    
   
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
@@ -21,29 +21,24 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: false
-  scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 2 # leave blank to include all the blog posts
+  enabled: true
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit:  # leave blank to include all the blog posts
 ---
 
-Check out my [audio](audio-projects), [game](game-projects), and [dev](dev-projects) projects.
+Check out my [blog](blog) and my [audio](audio-projects), [game](game-projects), [dev](dev-projects) projects.
 
-Have you ever been passionate about a bunch of things at once? Well, that's me and this site is proof. Here, you’ll find music I’ve produced, audio engineering projects I’ve worked on, and video games I’ve helped bring to life. I’m also into tech, so you’ll see some of the audio plugins and game dev tools I’m currently building.
+Audio Engineer with a strong background in audio for visual and interactive media, music production, and game audio programming.
 
-<h2> Things I like </h2>
+I've worked as Sound Designer in indie studios including RL Development, Amber Studio, and Sapphirux Studios. My expertise lies in audio design, game audio programming, and music composition.
 
-  - Stingrays
-  - Silent Hill
-  - Frutiger aero vibes
-  - IDM
-  - Aphex Twin
-  - Video games
-  - Free Jazz
+During my career in the audio and video game industry, I've a few roles such as: 
+- Studio manager
+- Dialogue editor
+- Sound designer
+- Technical sound designer.
 
-<h2> Things I don't like </h2>
-  - Clowns
-
-Wanna get in touch? 
+I'm currenlty learning about [audio programming](blog) and [game engine programming](blog) in a deeper level. 
 
 <!--- Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 

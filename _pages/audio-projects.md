@@ -4,7 +4,7 @@ title: 🔉 Audio
 permalink: /audio-projects/
 description:  First of all, I'm an audio engineer and these are a few projects I've worked on. 
 nav: true
-nav_order: 1
+nav_order: 8
 display_categories: [Audio Programming]
 horizontal: false
 ---
