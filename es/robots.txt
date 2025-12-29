@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://migueahumada.github.io/es/sitemap.xml

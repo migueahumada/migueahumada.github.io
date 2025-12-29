@@ -9,12 +9,12 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-audio",
-          title: "🔉 Audio",
-          description: "First of all, I&#39;m an audio engineer and these are a few projects I&#39;ve worked on.",
+  },{id: "nav-️-blog",
+          title: "🗣️ Blog",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/audio-projects/";
+            window.location.href = "/blog/";
           },
         },{id: "nav-games",
           title: "🎮 Games",
@@ -30,44 +30,66 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/dev-projects/";
           },
-        },{id: "nav-️-blog",
-          title: "🗣️ Blog",
-          description: "",
+        },{id: "nav-audio",
+          title: "🔉 Audio",
+          description: "First of all, I&#39;m an audio engineer and these are a few projects I&#39;ve worked on.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/blog/";
+            window.location.href = "/audio-projects/";
           },
-        },{id: "post-how-to-set-up-the-fmod-api-in-xcode-by-miguel-a-ahumada-medium",
+        },{id: "post-custom-audio-engine",
         
-          title: 'How to set up the FMOD API in Xcode | by Miguel A.... <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+          title: "Custom Audio Engine",
         
-        description: "How to set up the FMOD API in Xcode This is a guide on how to set up the FMOD API to be used in Xcode. This is how to implement the FMOD API in XCode like (this guy) Guy does it. Love him …",
+        description: "Custom audio engine developed on top of my custom engine with XAudio2.",
         section: "Posts",
         handler: () => {
           
-            window.open("https://medium.com/@migangahuga/how-to-set-up-the-fmod-api-in-xcode-bc855d92f245", "_blank");
+            window.location.href = "/blog/2025/custom-audio-engine/";
           
         },
-      },{id: "post-play-an-audio-file-with-xaudio2-by-miguel-a-ahumada-medium",
+      },{id: "post-wav-encoder-decoder",
         
-          title: '🔊Play an audio file with XAudio2 | by Miguel A. Ahumada | Medium... <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+          title: "Wav encoder/decoder",
         
-        description: "Alright, I hope that with this you can get an idea on how to play an audio file using XAudio2, which is a low level audio API used for games in Windows.",
+        description: "Custom wav encoder/decoder with some signal processing.",
         section: "Posts",
         handler: () => {
           
-            window.open("https://medium.com/@migangahuga/play-an-audio-file-with-xaudio2-cd7759c554c5", "_blank");
+            window.location.href = "/blog/2025/wav-encoder-decoder/";
           
         },
-      },{id: "post-how-to-set-up-the-fmod-api-in-visual-studio-by-miguel-a-ahumada-medium",
+      },{id: "post-simple-rasterizer",
         
-          title: '🔉 How to set up the FMOD API in Visual Studio | by... <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+          title: "Simple Rasterizer",
         
-        description: "🔉 How to set up the FMOD API in Visual Studio It took me at least an hour to complete all of this, but hopefully you can do it faster than I did. So, here’s a guide on how to set up the FMOD API …",
+        description: "Simple rasterizer made with DirectX11, XAudio2, ImGui and Assimp.",
         section: "Posts",
         handler: () => {
           
-            window.open("https://medium.com/@migangahuga/how-to-set-up-the-fmod-api-in-visual-studio-9353fbbd2144", "_blank");
+            window.location.href = "/blog/2025/simple-rasterizer/";
+          
+        },
+      },{id: "post-convolution-plugin",
+        
+          title: "Convolution Plugin",
+        
+        description: "Convolution Plugin made with JUCE",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/convolution-plugin/";
+          
+        },
+      },{id: "post-play-an-audio-file-with-xaudio2",
+        
+          title: "Play an audio file with XAudio2",
+        
+        description: "Play an audio file with XAudio2",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Play-audio-xaudio2/";
           
         },
       },{id: "projects-compressor-plugin-development",
