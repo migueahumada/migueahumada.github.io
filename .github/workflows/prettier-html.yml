@@ -24,8 +24,8 @@ jobs:
       - name: Check for Prettier
         run: npx prettier --version || echo "Prettier not found"
 
-      - name: Run Prettier on HTML files
-        run: npx prettier --write '**/*.html'
+      #- name: Run Prettier on HTML files
+      #  run: npx prettier --write '**/*.html'
 
       - name: Commit and push changes
         run: |
